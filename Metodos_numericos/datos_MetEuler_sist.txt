@@ -1,0 +1,2 @@
+2     1 0    0 1    0 3.2 
+%orden %valores iniciales %coeficientes derivadas de n-1 a 0 % a b
