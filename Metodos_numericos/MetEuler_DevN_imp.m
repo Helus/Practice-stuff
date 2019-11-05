@@ -38,7 +38,7 @@ for i=1:ord
 end
 y=zeros(ord,ndim);
 for i=1:ord
-  y(1,i)=y_0(i);
+  y(:,i)=y_0';
 end
 
 % Construccion de la solucion
