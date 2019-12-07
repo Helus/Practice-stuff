@@ -1,0 +1,23 @@
+
+library(rgl)  # Tienes que tener instalado el paquete rgl
+
+d=201
+x=seq(-3,3,length=d)
+y=x
+
+rho=0.6    # Coeficiente de correlación.
+	     # Cambiando este valor se obtienen formas diferentes.
+
+sigma=matrix(c(1,rho,rho,1),nrow=2)
+deter=det(sigma)
+isigma=solve(sigma)
+f <- function(x,y) {
+	(1/(2*pi*sqrt(deter)))*
+	exp( - (isigma[1,1]*x*x+isigma[2,2]*y*y+2*isigma[1,2]*x*y) /2 ) }
+z=outer(x,y,f)
+M=max(z)
+co=ceiling((5/M)*z)
+t4=c("blue","green","yellow","orange","red")
+co=t4[co]
+persp3d(x,y,z,col=co)
+
