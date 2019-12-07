@@ -11,6 +11,7 @@ function [sol,nor_grad,index_conver]=grad_wolfe(func,gradfun,rho,sigma,alphainit
 
   for i=1:itmax  
     [alfa, i0, index]=WolfeBiseccion(func, gradfun, x, d, rho, sigma, alphainit, gamma, 1);
+      % si no se quiere i0, index se pueden sustituir en la devolucion por ~ en cada
     if index==-1
        fprintf('ERROR no se pudo encontrar alfa en %i iteraciones \n',i0);
     elseif index==0

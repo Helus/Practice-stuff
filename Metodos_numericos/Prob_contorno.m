@@ -1,4 +1,4 @@
-# Programa que resuleve el PROBLEMA DEL CONTORNO
+% Programa que resuleve el PROBLEMA DEL CONTORNO
 
 clear
 close all
