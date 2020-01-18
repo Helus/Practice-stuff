@@ -1,4 +1,4 @@
-% Programa que resuelve por METODO DE RUNGE-KUTTA de ORDEN 4 el PVI 
+% Programa que resuelve por sigma-METODO el PVI 
 
 clear
 close all
@@ -10,19 +10,20 @@ y_ex=@(x) sin(x)+exp(-1.e4*x) ;
 
 y0=1 ; %valor inicial
 a=0 ; b=0.05 ; %extremos 
+sigma=0;
 
 h=input('Paso h? ');
 ndim=(b-a)/h; % hay ndim puntos (n+1)
 x=a:h:b;
 
-h2=h*0.5;
 y(1)=y0;
 for i=1:ndim
     k1=f(x(i),y(i));
-    k2=f(x(i)+h2,y(i)+h2*k1);
-    k3=f(x(i)+h2,y(i)+h2*k2);
-    k4=f(x(i+1),y(i)+k3*h);
-    y(i+1) = y(i)+h*(k1+2*k2+2*k3+k4)/6;
+    z0=y(i)+h*f(x(i),y(i));
+    fimp=@(z) z-f(x(i)+h,y(i)+h*(sigma*k1+(1-sigma)*z));
+    k2=fsolve(fimp,z0);
+    %k2=f(x(i)+h,y(i)+h*(sigma*k1+(1-sigma)*k2));
+    y(i+1) = y(i)+h*(sigma*k1+(1-sigma)*k2);
 end
 for i=1:(ndim+1) %calculo del error
   err(i)=y(i)-y_ex(x(i));

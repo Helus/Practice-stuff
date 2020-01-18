@@ -1,10 +1,10 @@
-% Programa que resuelve por RUNGE-KUTTA de orden 4 el PVI con una EDO de ORDEN N
+% Programa que resuelve por EULER IMPLICITO el PVI con una EDO de ORDEN N
 % y^n+a_(n-1)*y^(n-1)+...+a_1*y'+a_0*y0=f(x)
 
 clear
 close all
 
-g=@(x) cos(3*x) ;
+g=@(x) cos(3.*x) ;
 y_ex=@(x) (9*cos(x)-cos(3*x))/8 ;
 y1_ex=@(x) (3*sin(3*x)-9*sin(x))/8;
 
@@ -38,17 +38,15 @@ for i=1:ord
 end
 y=zeros(ord,ndim);
 for i=1:ord
-  y(1,i)=y_0(i);
+  y(:,i)=y_0';
 end
 
-h2=h*0.5;
 % Construccion de la solucion
+F=@(x,y) A*y+[zeros(ord-1,1);g(x)] ; %si se resuelve un sistema autonomo se puede borrar el ultimo sumando
 for i=1:ndim
-    k1=A*(y(:,i))+[zeros(ord-1,1);g(x(i))];
-    k2=A*(y(:,i)+h2*k1)+[zeros(ord-1,1);g(x(i)+h2)];
-    k3=A*(y(:,i)+h2*k2)+[zeros(ord-1,1);g(x(i)+h2)];
-    k4=A*(y(:,i)+k3*h)+[zeros(ord-1,1);g(x(i+1))];
-    y(:,i+1) = y(:,i)+h*(k1+2*k2+2*k3+k4)/6;
+  z0=y(:,i)+h*F(x(i),y(:,i));%(A*(y(:,i))+[zeros(ord-1,1);f(x(i))]);
+  fimp=@(z) z-y(:,i)-h*F(x(i+1),z);%(A*z+[zeros(ord-1,1);f(x(i+1))]);
+  y(:,i+1)=fsolve(fimp,z0);
 end
 
 % Calculo del error

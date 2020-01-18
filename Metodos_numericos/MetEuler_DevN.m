@@ -60,4 +60,4 @@ error_y1_x0=y(2,fix(posx0))-y1_ex(x0); % error en y'
 fprintf('Error en y(x0)=%e \r\n',abs(error_y0_x0));
 fprintf('Error en y1(x0)=%e \r\n',abs(error_y1_x0));
 
-presentacion_tabla(1,x,y,err);
+%presentacion_tabla(1,x,y,err);
