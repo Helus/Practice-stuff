@@ -6,7 +6,7 @@
 % porque el sistema es autonomo y no necesita hacer los calculos de los puntos intermedios xni,
 % factores irrelevantes que añadian mayor tiempo de calculo. Ademas se hecho en falta la
 % definicion de una funcion auxiliar f(x,y)=A*y en vez de las evaluaciones directas. Sin embargo, 
-% en este caso, se omitio a favor de la compactar el codigo y debido a la facil identificacion de
+% en este caso, se omitio a favor de compactar el codigo y debido a la facil identificacion de
 % la funcion para alguien que entienda como funciona el metodo de R-K. 
 % Objetivamente, este programa era un 25% mas rapido que el de control y ambos tenian la misma 
 % precision. Una comprobacion in situ demostro que las multiples evaluaciones funcionales de una
