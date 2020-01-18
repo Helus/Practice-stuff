@@ -1,5 +1,25 @@
 % RUNGE-KUTTA DE ORDEN 3
 
+% NOTA: este programa no se dio por bueno en el examen, pese a realizar los calculos correctos
+% (y mas eficientemente que el de la correccion), porque resuelve directamente el problema
+% y no utilizando explicitamente las formulas de R-K. En este caso no tenia sentido hacerlo asi
+% porque el sistema es autonomo y no necesita hacer los calculos de los puntos intermedios xni,
+% factores irrelevantes que añadian mayor tiempo de calculo. Ademas se hecho en falta la
+% definicion de una funcion auxiliar f(x,y)=A*y en vez de las evaluaciones directas. Sin embargo, 
+% en este caso, se omitio a favor de la compactar el codigo y debido a la facil identificacion de
+% la funcion para alguien que entienda como funciona el metodo de R-K. 
+% Objetivamente, este programa era un 25% mas rapido que el de control y ambos tenian la misma 
+% precision. Una comprobacion in situ demostro que las multiples evaluaciones funcionales de una
+% funcion patetica y el calculo sucesivo de puntos inutiles para la resolucion eran (obviamente) 
+% catastroficos para el rendimiento del programa.  
+% Pese a todo, por las razones expuestas anteriormente, el departamento de Matematica Aplicada 
+% decidio puntuar este programa con un 0.  
+
+% NOTA 2: me niego a corregir un programa que funciona perfectamente para su cometido: resolver
+% un ejercicio de examen. Se podria seguir mejorando y añadir mas claridad en el codigo, algo 
+% muy complicado dentro del poco tiempo de examen. Este programa esta tal cual se entrego
+% en la prueba. 
+
 clear
 close all
 

@@ -40,7 +40,7 @@ function [alpha, i0, index] = WolfeBiseccion(f, g, x, d, ...
 index  = 0; 
 i0     = 0;   % Numero de evaluaciones del funcional coste.
 itmax1 = 10;  % Numero maximo de iteraciones en la inicializacion. 
-itmax2 = 500;  % Numero maximo de iteraciones en la busqueda. 
+itmax2 = 50;  % Numero maximo de iteraciones en la busqueda. 
 
 init   = false;
 alphap = 0;

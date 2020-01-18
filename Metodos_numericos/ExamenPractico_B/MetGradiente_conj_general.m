@@ -6,7 +6,7 @@ clear
 
 alphainit=1; %alfa inicial
 
-[sol,nor_grad,index_conver]=grad_wolfe(func,gradfun,rho,sigma,alphainit,gamma,x0,itmax,tol);
+[sol,nor_grad,index_conver]=grad_wolfe_conj(func,gradfun,rho,sigma,alphainit,gamma,x0,itmax,tol);
  % encontrar paso con la regla de Wolfe
   
 if index_conver==itmax
