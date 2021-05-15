@@ -30,3 +30,5 @@ d1= @(x,h) (x(3:end)-x(1:end-2))/(2*h);     % aproximación primera derivada
 figure(1)
 plot(x(2:end-1), A*E*d1(uh,x(2)-x(1)))
 title('Esfuerzo normal')
+
+% en virtud de la gráfica, la máxima compresión se da en el punto x=0.
