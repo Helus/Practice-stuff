@@ -48,16 +48,38 @@ error_max_t=[];
 for i=1:length(t)
     error_max_t(i)=max(error(:,i));
 end
-plot([t0:(T-t0)/npast:T],error_max_t,'b*') % evolución del máximo error absoluto 
+plot([t0:(T-t0)/npast:T],error_max_t,'b*') % gráfica de la evolución del máximo error absoluto 
 
 % MÁXIMO ERROR RELATIVO
 error_rel=abs(error./Y_exacn);
 error_rel_max=max(error_rel(:));
 disp(['Error relativo máximo = ',num2str(error_rel_max)])
 
+
+% CÁLCULO DE LAS NORMAS
+h=(b-a)/npas;
+Dt=(T-t0)/npast;
+
+% norma infinito-L2
+normL2=[];
+for i=1:npast
+    normL2(i)=sqrt(trapz(x,(Y(:,i)).^2));
+end
+norm_Inf_L2=norm(normL2,Inf);
+disp(['Norma Inf-L2 = ',num2str(norm_Inf_L2)])
+
+% norma infinito-H1
+deriv_i= @(Y,h,i) (Y((3:end),i)-Y((1:end-2),i))/(2*h);     % aproximación primera derivada
+normH1=[];
+for i=1:npast
+    normH1(i)=sqrt(trapz(x,(Y(:,i)).^2) + trapz(x(2:end-1),deriv_i(Y,h,i).^2));
+end
+norm_Inf_H1=norm(normH1,Inf);
+disp(['Norma Inf-H1 = ',num2str(norm_Inf_H1)])
+
 % REPRESENTACIÓN GRÁFICA
-vector_X=a:(b-a)/npas:b;
-vector_T=t0:(T-t0)/npast:T;
+vector_X=a:h:b;
+vector_T=t0:Dt:T;
 [TT,XX] = meshgrid(vector_T,vector_X);
 %surf(TT,XX,Y_exacn) % representación de la solución exacta
 %surf(TT,XX,Y) % representación de la solución aproximada

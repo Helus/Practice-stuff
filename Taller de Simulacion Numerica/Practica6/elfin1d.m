@@ -21,7 +21,7 @@
 %datos_a: permiten elegir la condición de borde en a
 %           =[1,alfa] si es Dirichlet;
 %           =[2,ga] si es Neumann
-%           =[3,alfa,ga] si es Robin
+%           =[3,ga,alfa] si es Robin
 %           Una definición análoga para datos_b
 %iopblo: opción de bloqueo
 %       =1 se reemplaza la correspondiente ecuación del sistema por

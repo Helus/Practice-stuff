@@ -1,3 +1,5 @@
+% Practica 6
+
 % PRÁCTICA 6 ejercicio 2
 
 global h
@@ -104,8 +106,8 @@ iopcoef=2;
 iopblo=2;
 % l=2;
 % l=1;
-traza='*+'
-color='br'
+traza='*+';
+color='br';
 datos_dom=[3,a,3,5,b];  % subdominio, lista de extremos
 N=nel-1;
 figure()
