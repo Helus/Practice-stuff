@@ -1,5 +1,5 @@
 function [x,phi]=elfin1dNoLinealIF(fp,fdp,fr,fq,ff,p,a,b,datos_a,datos_b,nel,l,iopcoef,iopblo,tol,maxit)
-global phi0 p xnodos
+global phi0 p xnodos Gamma
 
 nver=nel+1; % número de vértices
 h=(b-a)/nel; % tamaño de discretización
@@ -34,7 +34,7 @@ for i=1:maxit
     else 
         % Actualizanción del coefeiciente del modelo linealizado
         phi0=phi;
-        fqIF=@qIF;
+        global phi0
     end 
 end
 
