@@ -7,5 +7,5 @@ else
     i0 = i; i1 = i+1;
 end
 phi0t = interp1([xnodos(i0),xnodos(i1)], [phi0(i0),phi0(i1)], t);
-y = fp(t)+(1-p)*q(t)*phi0t^p;
+y = -(f(t)+(1-p)*q(t)*phi0t^p);
 end

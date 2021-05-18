@@ -38,7 +38,8 @@ iopc=4;
 
 [tIF,chIF]=diffincNoLinealIF(@u3_3IF,@v3_3IF,@w3_3IF,p,a,b,alfa,beta,num_pas,iopc,gamma,delta,tol,maxit);
 
-norm(phiIF'-chIF,inf)
+error_IF=norm(phiIF'-chIF,inf);
+disp(['Error absoluto máximo entre Elementos finitos y Diferencias finitas (IF): ', num2str(error_IF) ])
 
 figure(1)
 plot(xIF,phiIF), hold on
@@ -49,7 +50,6 @@ leg.Location='best';
 hold off
 
 % resolución del problema por ELEMENTOS FINITOS (Newton)
-%   No funciona, debe haber un error en dpN.m
 [xN,phiN]=elfin1dNoLinealN(fp,fdp,fr,fq,ff,p,a,b,datos_a,datos_b,nel,l,iopcoef,iopblo,tol,maxit);
 
 % resolución del problema por DIFERENCIAS FINITAS (Newton)
@@ -63,7 +63,9 @@ maxit=1000;
 
 [tN,chN]=diffincNoLinealN(@u3_3IF,@v3_3IF,@w3_3IF,p,a,b,alfa,beta,num_pas,iopc,gamma,delta,tol,maxit);
 
-norm(phiN'-chN,inf)
+error_N=norm(phiN'-chN,inf);
+disp(['Error absoluto máximo entre Elementos finitos y Diferencias finitas (NW): ', num2str(error_N) ])
+
 
 figure(2)
 plot(xN,phiN), hold on
