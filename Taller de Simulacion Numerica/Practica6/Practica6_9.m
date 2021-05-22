@@ -71,3 +71,13 @@ figure(1)
 pos_1=(0.25-t0)/Dt+1; % posición en el vector de tiempos de t=0.25
 plot(x,Y(:,pos_1)), hold on
 plot(x,Z(:,pos_1))
+leg=legend('Elementos finitos','Diferencias finitas');
+title('t=0.25')
+hold off
+figure(2)
+pos_4=(500-t0)/Dt+1; % posición en el vector de tiempos de t=0.25
+plot(x,Y(:,pos_4)), hold on
+plot(x,Z(:,pos_4))
+leg2=legend('Elementos finitos','Diferencias finitas');
+title('t=500')
+hold off
