@@ -1,14 +1,11 @@
 clear all; close all;
-global xx;
-xx=[];
 
 
 % APARTADO 1
 
 f=@(x) (x(1)-6)^2+(x(2)-7)^2;
-options=optimset('Display','iter');%,'PlotFcns',@optimplotfval);
-%n=2;
-v0=[1 2]; 
+options=optimset('Display','iter');
+v0=[1 2]; % iterante inicial (factible)
 
 disp('Solución con fminunc')
 [vmin,fmin] =fminunc(f,v0,options)

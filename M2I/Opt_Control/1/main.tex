@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+
+\usepackage[papersize={210mm,297mm},lmargin=3cm,rmargin=3cm,top=4cm,bottom=4cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{latexsym,pdfsync,xcolor,graphicx}
+\usepackage[nottoc]{tocbibind}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}	
+\usepackage{tikz}
+\usepackage{appendix}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathtools}	% para utilizar \coloneqq
+\usepackage{cancel}		% para tachar expresiones
+\usepackage{float} 		% para colocar imágenes
+ 
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+\title{Primer trabajo Taller de Simulación Numérica}
+\author{\textbf{Alejandro Victorero Domínguez}}
+\date{07/04/2021}
+
+\begin{document}
+
+\maketitle
+
+\section*{Ejercicio 1}
+
+Sea un $p\in\mathbb{R}$, $p\geq 1$, y consideremos la función $$x(t)= (t-2)\sec \left(\frac{\pi t}{16}\right)$$ solución del problema no lineal:
+\begin{equation} \label{eq:problema}
+\begin{cases}
+x''(t)=u(t)+v(t)x^p(t)+w(t)x'(t), ~~ t\in[2,3],\\
+x(2)=0,\\
+x'(3)+x(3)=\left( 2+\frac{\pi}{16}\tan\left(\frac{3\pi}{16}\right) \right)\sec\left(\frac{3\pi}{16}\right),
+\end{cases}
+\end{equation}
+siendo las funciones $u(t),v(t), w(t)$ tales que
+\begin{align*}
+   v(t) &= t,\\
+   w(t) &= \cos\left( \frac{\pi t}{16} \right),\\
+   u(t) &= \frac{\pi}{16}\sec\left( \frac{\pi t}{16} \right)\left[ 2\tan\left( \frac{\pi t}{16} \right) + \frac{\pi}{16}(t-2)\left( \sec^2\left( \frac{\pi t}{16} \right) + \tan^2\left( \frac{\pi t}{16} \right) \right)\right]\\
+   & \qquad -t(t-2)^p\sec^p\left( \frac{\pi t}{16} \right) - \left(1+\frac{\pi}{16}(t-2)\tan\left( \frac{\pi t }{16} \right)\right),\\
+\end{align*}
+y se consideró en \eqref{eq:problema} el valor particular $\delta=1$ para el caso general de $\text{iopc}=3$ en las condiciones de contorno.\\
+
+Un rápido cálculo de las derivadas de $x(t)$ nos permitirá comprobar que es efectivamente una solución de \eqref{eq:problema}:
+
+\begin{align*}
+    x(t) &= (t-2)\sec \left(\frac{\pi t}{16}\right),\\
+    x'(t) &= \sec \left(\frac{\pi t}{16}\right) + (t-2)\frac{\pi}{16}\sec \left(\frac{\pi t}{16}\right)\tan\left(\frac{\pi t}{16}\right) = \left( 1+\frac{\pi}{16}(t-2)\tan\left(\frac{\pi t}{16}\right) \right) \sec \left(\frac{\pi t}{16}\right),\\
+    x''(t) &= \left[ \frac{\pi}{16}\tan\left(\frac{\pi t}{16} \right) + \left(\frac{\pi}{16}\right)^2(t-2)\sec^2 \left(\frac{\pi t}{16}\right) \right]\sec \left(\frac{\pi t}{16}\right)\\
+    & \qquad + \left( 1+\frac{\pi}{16}(t-2)\tan\left(\frac{\pi t}{16} \right) \right)\frac{\pi}{16}\sec\left(\frac{\pi t}{16} \right)\tan\left(\frac{\pi t}{16} \right)\\
+    &=  \frac{\pi}{16}\sec\left(\frac{\pi t}{16} \right)\left[ \tan\left(\frac{\pi t}{16} \right) + \frac{\pi}{16}(t-2)\sec^2 \left(\frac{\pi t}{16}\right) + \left( 1+\frac{\pi}{16}(t-2)\tan\left(\frac{\pi t}{16} \right) \right)\tan\left(\frac{\pi t}{16} \right)\right]\\
+    &= \frac{\pi}{16}\sec\left(\frac{\pi t}{16} \right)\left[ 2\tan\left(\frac{\pi t}{16} \right) + \frac{\pi}{16}(t-2)\left( \sec^2 \left(\frac{\pi t}{16}\right) + \tan^2 \left(\frac{\pi t}{16}\right) \right) \right].
+\end{align*}
+
+Es inmediato comprobar que $x(t)$  verifica las condiciones de contorno de \eqref{eq:problema}:
+\begin{align*}
+	x(2) &= (2-2) \sec \left(\frac{2\pi }{16}\right) = 0,\\
+	x'(3)+x(3) &= \left( 1+\frac{\pi}{16}(3-2)\tan\left(\frac{3\pi}{16}\right) \right) \sec \left(\frac{3\pi}{16}\right) + (3-2)\sec \left(\frac{3\pi}{16}\right)\\
+	& = \left( 2+\frac{\pi}{16}\tan\left(\frac{3\pi}{16}\right) \right)\sec\left(\frac{3\pi}{16}\right).
+\end{align*}
+
+Finalmente, puesto que 
+\begin{align*}
+u(t)=x''(t)-v(t)x^p(t)-w(t)x'(t)=x''(t)-t(t-2)^p\sec^p\left( \frac{\pi t}{16} \right) - \left(1+\frac{\pi}{16}(t-2)\tan\left( \frac{\pi t }{16} \right)\right),
+\end{align*}
+esto equivale a que $x(t)$ sea solución de la ecuación diferencial $$x''(t)=u(t)+v(t)x^p(t)+w(t)x'(t).$$ Por tanto, $x(t)$ es solución de \eqref{eq:problema}.\\
+
+En particular, si fijamos $p=1$ se tiene el siguiente problema de contorno lineal
+\begin{equation} \label{eq:problema_lineal}
+\begin{cases}
+x''(t)=u(t)+v(t)x(t)+w(t)x'(t), ~~ t\in[2,3],\\
+x(2)=0,\\
+x'(3)+x(3)=\left( 2+\frac{\pi}{16}\tan\left(\frac{3\pi}{16}\right) \right)\sec\left(\frac{3\pi}{16}\right),
+\end{cases}
+\end{equation}
+siendo las funciones $u,v,w$ las mismas que en el caso no lineal, y veamos que \eqref{eq:problema_lineal} está en las condiciones del teorema de existencia y unicidad de solución.
+
+En primer lugar, está claro que $v,w\in\mathcal{C}^{\infty}([2,3])$, luego son funciones continuas en $[2,3]$ y por tanto acotadas. Además, $v(t)=t>0$ para $t\in[2,3]$. Por otro lado, se tiene que verificar para las condiciones de contorno en el caso general que:
+\[
+|\gamma| +|\delta|>0 \quad \text{y} \quad \gamma \leq 0 \leq \delta.
+\]
+Como en nuestro caso $\gamma=0$ y $\delta=1$, estamos en dichas condiciones.
+
+Por lo tanto, el teorema de existencia y unicidad nos garantiza que \eqref{eq:problema_lineal} tiene solución única. Más en concreto, $ x(t) = (t-2)\sec \left(\frac{\pi t}{16}\right)$ es la única solución de \eqref{eq:problema_lineal}, tomando $p=1$.
+
+\section*{Ejercicio 2}
+
+Se muestran a continuación los resultados obtenido al resolver el problema de contorno lineal \eqref{eq:problema_lineal} utilizando MATLAB. En el archivo \texttt{ejercicio\_2.m} se encuentra la programación de este ejercicio, así como las gráficas obtenidas que se muestran a continuación:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{2_grafica}
+\caption{Solución exacta y aproximada para el caso lineal ($p=1$).}
+\label{fig:p1_sol}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{2_grafica_maxerror}
+\caption{Solución exacta y aproximada, junto con el error absoluto (multiplicado por $10^7$) en cada punto.}
+\label{fig:p1_error}
+\end{figure}
+
+Notemos que en la Figura \ref{fig:p1_sol} aparecen la solución exacta y real superpuestas. Esto se debe a que \texttt{diffinc.m} hace una muy buena aproximación de la solución del problema \eqref{eq:problema_lineal} para el paso utilizado. 
+
+El punto azul que aparece en la Figura \ref{fig:p1_error} representa el punto donde se comete el máximo error absoluto entre la solución exacta y la aproximada. Corresponde al punto de abscisa $x=3$ sobre la gráfica de la solución y el error en dicho punto toma el valor aproximado de $4.7493\cdot 10^{-7}$.
+
+\section*{Ejercicio 3}
+
+Se muestran a continuación los resultados obtenido al resolver el problema de contorno no lineal \eqref{eq:problema} para el caso $p=p^*=2.4$ utilizando MATLAB. El algoritmo utilizado fue la Iteración Funcional y se alcanzó la convergencia en $10$ iteraciones, para una tolerancia de $10^{-4}$. En el archivo \texttt{ejercicio\_3.m} se encuentra la programación de este ejercicio, así como las gráficas obtenidas que se muestran a continuación:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{3_grafica}
+\caption{Solución exacta y aproximada obtenidas mediante Iteración Funcional para el caso no lineal ($p^*=2.4$).}
+\label{fig:nolin_sol}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{3_grafica_error}
+\caption{Solución exacta y aproximada obtenidas mediante Iteración Funcional, junto con el error absoluto (multiplicado por $10^5$) en cada punto.}
+\label{fig:nolin_error}
+\end{figure}
+
+Notemos que en la Figura \ref{fig:nolin_sol} aparecen la solución exacta y aproximada superpuestas. Esto se debe a que \texttt{diffincNoLinealIF.m} (función que utiliza \texttt{diffinc.m} para poder resolver el problema no lineal mediante Iteración Funcional) hace una buena aproximación de la solución del problema \eqref{eq:problema} para el paso utilizado. 
+
+\section*{Ejercicio 4}
+
+Una forma de aproximar la derivada de una función $x(t)$ en un punto $t_i$ es mediante la fórmula centrada de la derivada dada por
+\[
+x'(t_i)\simeq \frac{x_{t_{i+1}}-x_{t_{i-1}}}{2h},
+\]   
+donde $h$ es el paso de discretización del intervalo sobre el que está definida $x(t)$. 
+
+Esta fórmula se puede deducir a partir del desarrollo de Taylor de $x(t)$ y se puede comprobar que es de orden 2 en el paso $h$. Por este último motivo, esta expresión nos servirá para calcular la derivada de la solución aproximada.
+
+Se muestra a continuación la comparación entre la derivada de la solución exacta y de la aproximada. Dichas soluciones se obtuvieron tras resolver el problema de contorno no lineal \eqref{eq:problema} para el caso $p=p^*=2.4$ utilizando MATLAB. El algoritmo utilizado fue la Iteración Funcional y se alcanzó la convergencia en $10$ iteraciones, para una tolerancia de $10^{-4}$. En el archivo \texttt{ejercicio\_4.m} se encuentra la programación de este ejercicio, así como la obtenida que se muestra a continuación:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{4_grafica}
+\caption{Derivada exacta y discretizada de la solución exacta y discretizada (respectivamente) obtenidas mediante Iteración Funcional para el caso no lineal ($p^*=2.4$).}
+\label{fig:derivadas}
+\end{figure}
+
+Como ya se menciona en el Ejercicio 3, la solución calculada por diferencias finitas se aproxima bastante bien a la solución exacta, por lo que no es de extrañar que las gráficas de sus respectivas derivadas estén casi solapadas. La norma infinito de la diferencia de dichas derivadas se pudo calcular y es 
+\[
+\norm{x'(t)-x_h'}_{\infty}=2.8546\cdot 10^{-5}.
+\] 
+
+
+\section*{Ejercicio 5}
+
+La norma del espacio de Sobolev $H^1([2,3])$ se define como
+\[
+\norm{f(t)}_{H^1([a,b])}=\left(\int_a^b f(t)^2 + (f'(t))^2 dt\right)^{\frac{1}{2}}.
+\]
+
+Utilizando los resultados obtenidos para el problema lineal \eqref{eq:problema_lineal} en el Ejercicio 2, podemos calcular la norma en $H^1([2,3])$ de la función diferencia entre la solución exacta y la aproximada. Para el caso lineal $p=1$: 
+\[
+\norm{x(t)-x_h}_{H^1([2,3])}=5.4422\cdot 10^{-7}.
+\] 
+
+Utilizando los resultados obtenidos para el problema no lineal \eqref{eq:problema} en el Ejercicio 3, podemos calcular la norma en $H^1([2,3])$ de la función diferencia entre la solución exacta y la aproximada. Para el caso no lineal $p^*=2.4$: 
+\[
+\norm{x(t)-x_h}_{H^1([2,3])}=2.5636\cdot 10^{-5}.
+\] 
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
