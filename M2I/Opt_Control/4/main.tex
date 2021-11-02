@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+
+\usepackage[papersize={210mm,297mm},lmargin=3cm,rmargin=3cm,top=4cm,bottom=4cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{latexsym,pdfsync,xcolor,graphicx}
+\usepackage[nottoc]{tocbibind}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}	
+\usepackage{tikz}
+\usepackage{appendix}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathtools}	% para utilizar \coloneqq
+\usepackage{cancel}		% para tachar expresiones
+\usepackage{float} 		% para colocar imágenes
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+\title{}
+\author{\textbf{Alejandro Victorero Domínguez}}
+\date{Universidad de Santiago de Compostela\\[2ex]\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Do it yourself!! (4)} 
+Minimize the unconstrained function with:
+\begin{enumerate}[label=\alph*)]
+	\item A multi-start of local methods.
+	\item With a global method of your choice.
+\end{enumerate}
+
+What is the global solution? Compare the performance of the selected optimizer and the multistart.
+
+\begin{equation*}
+f(\mathbf{x})=An+\sum_{i=1}^n\left[ x_i^2 -A\cos (2\pi x_i)\right],
+\end{equation*}
+
+where $A=10$, $n=2$ and $x_i\in [-5.12 , 5.12]$.
+\vspace{0.25cm}
+\hrule\vspace{0.25cm}
+\subsection*{a) sans}
+
+sans
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
