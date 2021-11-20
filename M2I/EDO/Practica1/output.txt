@@ -1,0 +1,102 @@
+***** DATA *****
+* Initial (left) extremum: 
+a = 0.00000E+00.
+
+* Final (right) extremum: 
+b = 1.00000E+00.
+
+* Initial condition: 
+eta = 1.00000E+00 1.00000E+00 1.00000E+00 1.00000E+00 
+
+* Number of nodes of the mesh: 
+N = 10. 
+
+* Display frequency: 
+dfreq = 1 (in order not to display too many lines, the results are displayed only for
+the first node, the last node, and when the number of the node is a multiple of dfreq).
+
+* Plot frequency: 
+plfreq = 1 (in order not to plot too many points, the results are plotted only for
+the first node, the last node, and when the number of the node is a multiple of plfreq).
+
+* Option for exact solution: 
+ex = 1 (the exact solution is known).
+
+* Valor de theta: 
+ theta = 6.00000E-01.
+
+* Método escogido para la resolución del sistema: Método de punto fijo
+
+* Número máximo de iteraciones: 2000
+
+* Epsilon de parada: 
+ epsilon = 1.00000E-14.
+* Delta de parada: 
+ delta = 1.00000E-14.
+
+**** COMPUTATION ****
+Dimension of the problem: 
+m = 4.
+
+Stepsize: 
+h = (b-a)/(N-1) = 1.11111E-01.
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+1 		 0.0000E+00 			 1.000000E+00 				 1.000000E+00 			 0.000000E+00
+ 								 1.000000E+00 				 1.000000E+00
+ 								 1.000000E+00 				 1.000000E+00
+ 								 1.000000E+00 				 1.000000E+00
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+2 		 1.1111E-01 			 1.009877E+00 				 1.012422E+00 			 1.472263E-02
+ 								 1.049383E+00 				 1.063672E+00
+ 								 1.009877E+00 				 1.012345E+00
+ 								 1.000000E+00 				 9.999238E-01
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+3 		 2.2222E-01 			 1.044786E+00 				 1.050601E+00 			 4.960827E-02
+ 								 1.230928E+00 				 1.279940E+00
+ 								 1.044444E+00 				 1.049363E+00
+ 								 9.996586E-01 				 9.987809E-01
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+4 		 3.3333E-01 			 1.106678E+00 				 1.117264E+00 			 1.418711E-01
+ 								 1.599663E+00 				 1.740919E+00
+ 								 1.103683E+00 				 1.110883E+00
+ 								 9.970248E-01 				 9.938335E-01
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+5 		 4.4444E-01 			 1.199308E+00 				 1.216830E+00 			 3.739927E-01
+ 								 2.294377E+00 				 2.667773E+00
+ 								 1.187384E+00 				 1.196249E+00
+ 								 9.883206E-01 				 9.805541E-01
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+6 		 5.5556E-01 			 1.328081E+00 				 1.354951E+00 			 9.409855E-01
+ 								 3.626422E+00 				 4.566857E+00
+ 								 1.294757E+00 				 1.303765E+00
+ 								 9.679627E-01 				 9.527470E-01
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+7 		 6.6667E-01 			 1.499486E+00 				 1.537190E+00 			 2.290841E+00
+ 								 6.292609E+00 				 8.582986E+00
+ 								 1.423819E+00 				 1.429956E+00
+ 								 9.286618E-01 				 9.028497E-01
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+8 		 7.7778E-01 			 1.719537E+00 				 1.765990E+00 			 5.322061E+00
+ 								 1.185503E+01 				 1.717675E+01
+ 								 1.570571E+00 				 1.568711E+00
+ 								 8.616879E-01 				 8.225372E-01
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+9 		 8.8889E-01 			 1.990269E+00 				 2.034887E+00 			 1.120058E+01
+ 								 2.368967E+01 				 3.489002E+01
+ 								 1.728015E+00 				 1.710440E+00
+ 								 7.574355E-01 				 7.037576E-01
+
+Step 		 Node 				 Approximate solution 		 Exact solution 		 Error (2-norm)
+10 		 1.0000E+00 			 2.302935E+00 				 2.319777E+00 			 1.895907E+01
+ 								 4.821971E+01 				 6.717861E+01
+ 								 1.885113E+00 				 1.841471E+00
+ 								 6.064398E-01 				 5.403023E-01
