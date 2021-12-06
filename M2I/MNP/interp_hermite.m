@@ -23,5 +23,5 @@ for i=1:(2*N-1)
     
     H=[H prod];
 end
-H=sum(Q.*H);
-fprintf('valor de f(%4.3f)=%f\n',x_interp,H)
+s=sum(Q.*H);
+fprintf('valor de f(%4.3f)=%f\n',x_interp,s)
